@@ -5,12 +5,32 @@ using namespace locadora;
 
 unsigned int Veiculo::proxId{0};
 
-Veiculo::Veiculo(std::string& modelo, float custo)
-    : id{Veiculo::proxId},  modelo{modelo}, custo{custo} {
+Veiculo::Veiculo(Marca* const marca, const std::string& modelo,
+                 const float custo, const unsigned short int capacidade,
+                 const Placa& placa)
+    : id{Veiculo::proxId},
+      marca{nullptr},
+      modelo{modelo},
+      custo{custo},
+      capacidade{capacidade},
+      placa{placa} {
     Veiculo::proxId++;
+    this->setMarca(marca);
 }
 
-unsigned int Veiculo::getId() const { return this->id; }
+unsigned int Veiculo::getId() const { return id; }
+
+const Marca* Veiculo::getMarca() const { return this->marca; }
+
+void Veiculo::setMarca(Marca* const marca) {
+    if (this->marca != nullptr) {
+        this->marca->veiculos.remove(this);
+    }
+    this->marca = marca;
+    if (this->marca != nullptr) {
+        this->marca->veiculos.push_back(this);
+    }
+}
 
 std::string Veiculo::getModelo() const { return this->modelo; }
 
@@ -20,11 +40,12 @@ float Veiculo::getCusto() const { return this->custo; }
 
 void Veiculo::setCusto(float custo) { this->custo = custo; }
 
-const Marca* Veiculo::getMarca() const { return this->marca; }
+unsigned short int Veiculo::getCapacidade() const { return this->capacidade; }
 
-void Veiculo::setMarca(Marca* const marca) {
-    if (this->marca == nullptr) {
-        this->marca = marca;
-        this->marca->veiculos.push_back(this);
-    }
-}
+void Veiculo::setCapacidade(const unsigned short int capacidade) {
+    this->capacidade = capacidade;
+};
+
+const Placa& Veiculo::getPlaca() const { return this->placa; }
+
+void Veiculo::setPlaca(const Placa& placa) { this->placa = placa; }

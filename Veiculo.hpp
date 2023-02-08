@@ -1,33 +1,44 @@
 #ifndef VEICULO_HPP
 #define VEICULO_HPP
 
-#include <string> 
+#include <string>
+
+#include "Placa.hpp"
 
 namespace locadora {
 class Marca;
 class Veiculo {
     public:
-        Veiculo(std::string &modelo, float custo);
-        virtual ~Veiculo() = default;
+     Veiculo(Marca* const marca, const std::string& modelo, const float custo,
+             const unsigned short int capacidade, const Placa& placa);
 
-        unsigned int getId() const;
+     virtual ~Veiculo() = default;
 
-        std::string getModelo() const;
-        void setModelo(const std::string& modelo);
+     unsigned int getId() const;
 
-        float getCusto() const;
-        void setCusto(float custo);
+     const Marca* getMarca() const;
+     void setMarca(Marca* const marca);
 
-        const Marca* getMarca() const;
-        void setMarca(Marca* const marca);
+     std::string getModelo() const;
+     void setModelo(const std::string& modelo);
+
+     float getCusto() const;
+     void setCusto(const float custo);
+
+     unsigned short int getCapacidade() const;
+     void setCapacidade(const unsigned short int capacidade);
+
+     const Placa& getPlaca() const;
+     void setPlaca(const Placa& placa);
 
     private:
         static unsigned int proxId;
         unsigned int id;
+        Marca *marca;
         std::string modelo;
         float custo;
-        Marca *marca;
-        // Placa
+        unsigned short int capacidade;
+        Placa placa;
 };
 }
 
