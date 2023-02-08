@@ -2,10 +2,9 @@
 
 # define as flags
 CC = g++
-CFLAGS = -Wall -std=c++17
-LFLAGS =
+CPPFLAGS = -Wall -std=c++17
 
-OBJS =
+OBJS = Placa.o PlacaInvalidaException.o
 PROG = main
 
 # regra default
@@ -13,11 +12,11 @@ all: $(PROG)
 
 # regras de ligacao
 $(PROG) : % :  $(OBJS) %.o
-	$(CC) $^ -o $@ $(LFLAGS)
+	$(CC) $^ -o $@
 
 # regras de compilação
 %.o: %.c %.h
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) -c -o $@ $<
 
 # compila com flags de depuração
 debug: CFLAGS += -DDEBUG -g
