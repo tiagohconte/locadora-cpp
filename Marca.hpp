@@ -2,18 +2,25 @@
 #define MARCA_HPP
 
 #include <string>
+#include <list>
+
+#include "Veiculo.hpp"
 
 namespace locadora {
 class Marca {
-   public:
-    Marca(const std::string& nome);
+    friend void Veiculo::setMarca(Marca* marca);
 
-    std::string getNome() const;
-    void setNome(const std::string& nome);
+    public:
+        Marca(const std::string& nome);
 
-   private:
-    std::string nome;
-    // vetor de veículos
+        std::string getNome() const;
+        void setNome(const std::string& nome);
+
+        std::list<Veiculo *>& getVeiculos();
+
+    private:
+        std::string nome;
+        std::list<Veiculo *> veiculos;
 };
 }  // namespace locadora
 

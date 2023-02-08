@@ -1,6 +1,7 @@
 #include "Marca.hpp"
+#include "Veiculo.hpp"
 
-namespace locadora {
+using namespace locadora;
 
 Marca::Marca(const std::string& nome)
     : nome{nome} {}
@@ -9,4 +10,4 @@ std::string Marca::getNome() const { return this->nome; }
 
 void Marca::setNome(const std::string& nome) { this->nome = nome; }
 
-}  // namespace locadora
+std::list<Veiculo*>& Marca::getVeiculos() { return this->veiculos; }
