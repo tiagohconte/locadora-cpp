@@ -4,7 +4,7 @@
 CC = g++
 CPPFLAGS = -Wall -std=c++17
 
-OBJS = Placa.o PlacaInvalidaException.o
+OBJS = Cliente.o CPF.o CPFInvalidoException.o Marca.o Placa.o PlacaInvalidaException.o Veiculo.o
 PROG = main
 
 # regra default
@@ -14,12 +14,8 @@ all: $(PROG)
 $(PROG) : % :  $(OBJS) %.o
 	$(CC) $^ -o $@
 
-# regras de compilação
-%.o: %.c %.h
-	$(CC) -c -o $@ $<
-
 # compila com flags de depuração
-debug: CFLAGS += -DDEBUG -g
+debug: CPPFLAGS += -DDEBUG -g
 debug: all
 
 # remove arquivos temporários
