@@ -17,4 +17,5 @@ void Cliente::setNome(const std::string& nome) { this->nome = nome; }
 const CPF& Cliente::getCpf() const { return this->cpf; }
 
 void Cliente::setCpf(const CPF& cpf) { this->cpf = cpf; }
+
 }

@@ -20,6 +20,8 @@ class Veiculo {
         unsigned int id;
         std::string modelo;
         float custo;
+        // Marca
+        // Placa
 };
 }
 
