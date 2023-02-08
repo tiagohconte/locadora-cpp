@@ -5,8 +5,8 @@
 
 namespace locadora {
 class Placa {
-    // friend std::ostream& operator<<(std::ostream& stream, const Placa& cpf);
-    // friend std::istream& operator>>(std::istream& stream, Placa& cpf);
+    friend std::ostream& operator<<(std::ostream& stream, const Placa& placa);
+    friend std::istream& operator>>(std::istream& stream, Placa& placa);
 
    public:
     Placa() = default;
@@ -28,7 +28,7 @@ class Placa {
     // const Placa& operator=(const unsigned long numero);
 
     char operator[](short int idx) const;
-    // unsigned long operator()(short int inicio, short int tam) const;
+    std::string operator()(short int inicio, short int tam) const;
 
    private:
     bool validarPlaca(const std::string& placa) const;
