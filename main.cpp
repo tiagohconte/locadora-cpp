@@ -1,14 +1,28 @@
 #include <iostream>
 
+#include "Marca.hpp"
+#include "Veiculo.hpp"
+#include "Cliente.hpp"
 #include "Placa.hpp"
+#include "Contrato.hpp"
+
+using namespace locadora;
 
 int main() {
-    locadora::Placa p1("ABC1234");
-    locadora::Placa p2("ABC1G34");
-    locadora::Placa p3("A2C1234");
-    locadora::Placa p4("ABC12C4");
+    
+    Placa p{"ABC1234"};
+    Marca m{"Chevrolet"};
+    Veiculo *v = new Veiculo{&m, "Astra", 10, 5, p};
+    Cliente c{"Padre Kelson", 11111111111};
+    Contrato *contrato = new Contrato{&c, v, 5};
 
-    // std::cout << p[2] << "\n";
+    std::cout << "----- DADOS CONTRATO -----" << std::endl;
+    std::cout << contrato->getCliente()->getNome() << " - " << contrato->getCliente()->getCpf() << std::endl;
+    std::cout << contrato->getVeiculo()->getMarca()->getNome() << " - " 
+        << contrato->getVeiculo()->getModelo() << " - " 
+        << contrato->getVeiculo()->getPlaca() << std::endl;
+    std::cout << "R$" << contrato->getPreco() << " (" << contrato->getDuracao() << " dias)" << std::endl;
+    std::cout << "--------------------------" << std::endl;
 
     return 0;
 }
