@@ -21,7 +21,7 @@ int main() {
     std::cout << contrato->getVeiculo()->getMarca()->getNome() << " - " 
         << contrato->getVeiculo()->getModelo() << " - " 
         << contrato->getVeiculo()->getPlaca() << std::endl;
-    std::cout << "R$" << contrato->getPreco() << " (" << contrato->getDuracao() << " dias)" << std::endl;
+    std::cout << "R$ " << contrato->getPreco() << " (" << contrato->getDuracao() << " dias)" << std::endl;
     std::cout << "--------------------------" << std::endl;
 
     return 0;
