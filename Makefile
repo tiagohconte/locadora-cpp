@@ -4,7 +4,7 @@
 CC = g++
 CPPFLAGS = -Wall -std=c++17
 
-OBJS = Carro.o Cliente.o Console.o Contrato.o CPF.o CPFInvalidoException.o Marca.o Placa.o PlacaInvalidaException.o Veiculo.o
+OBJS = Carro.o Catalogo.o Cliente.o Console.o Contrato.o CPF.o CPFInvalidoException.o Marca.o Placa.o PlacaInvalidaException.o Veiculo.o
 PROG = main
 
 # regra default

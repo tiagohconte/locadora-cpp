@@ -13,7 +13,8 @@ Veiculo::Veiculo(Marca* const marca, const std::string& modelo,
       modelo{modelo},
       custo{custo},
       capacidade{capacidade},
-      placa{placa} {
+      placa{placa},
+      status{EnumStatus::DISPONIVEL} {
     Veiculo::proxId++;
     this->setMarca(marca);
 }
@@ -42,10 +43,12 @@ void Veiculo::setCusto(float custo) { this->custo = custo; }
 
 unsigned short int Veiculo::getCapacidade() const { return this->capacidade; }
 
-void Veiculo::setCapacidade(const unsigned short int capacidade) {
-    this->capacidade = capacidade;
-};
+void Veiculo::setCapacidade(const unsigned short int capacidade) { this->capacidade = capacidade; }
 
 const Placa& Veiculo::getPlaca() const { return this->placa; }
 
 void Veiculo::setPlaca(const Placa& placa) { this->placa = placa; }
+
+EnumStatus Veiculo::getStatus() const { return this->status; }
+
+void Veiculo::setStatus(const EnumStatus status) { this->status = status; }

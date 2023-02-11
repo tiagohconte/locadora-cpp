@@ -6,6 +6,9 @@
 #include "Placa.hpp"
 
 namespace locadora {
+
+enum class EnumStatus { DISPONIVEL, INDISPONIVEL };
+
 class Marca;
 class Veiculo {
     public:
@@ -31,6 +34,9 @@ class Veiculo {
      const Placa& getPlaca() const;
      void setPlaca(const Placa& placa);
 
+     EnumStatus getStatus() const;
+     void setStatus(const EnumStatus status);
+
     private:
         static unsigned int proxId;
         unsigned int id;
@@ -39,6 +45,7 @@ class Veiculo {
         float custo;
         unsigned short int capacidade;
         Placa placa;
+        EnumStatus status;
 };
 }
 
