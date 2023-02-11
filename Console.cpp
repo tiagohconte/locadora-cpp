@@ -25,3 +25,15 @@ void Console::imprimirDadosCarro(const Carro& carro) {
     std::cout << "Portas: " << carro.getPortas() << '\n';
     // std::cout << "Categoria: " << carro.getCategoria() << '\n';
 }
+
+void Console::imprimirDadosMotocicleta(const Motocicleta& moto) {
+    imprimirDadosVeiculo(moto);
+    std::cout << "Cilindrada: " << moto.getCilindrada() << '\n';
+}
+
+void Console::imprimirCatalogo(const Catalogo& catalogo) {
+    for (Veiculo *v: catalogo.getCatalogo()) {
+        Console::imprimirDadosVeiculo(*v);
+        std::cout << std::endl;
+    }
+}
