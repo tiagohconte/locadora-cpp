@@ -27,4 +27,14 @@ EnumCategoria Carro::getCategoria() const { return this->categoria; }
 void Carro::setCategoria(const EnumCategoria categoria) {
     this->categoria = categoria;
 }
+
+std::string Carro::getNomeCategoria() const{
+    std::unordered_map<EnumCategoria, std::string> nomeCategoria = {
+        {EnumCategoria::CAMINHONETE, "Caminhonete"},
+        {EnumCategoria::HATCH, "Hatch"},
+        {EnumCategoria::SEDAN, "Sedan"},
+        {EnumCategoria::SUV, "SUV"}
+    };
+    return nomeCategoria[this->getCategoria()];
+}
 }  // namespace locadora

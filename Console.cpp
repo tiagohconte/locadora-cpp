@@ -23,7 +23,7 @@ void Console::imprimirDadosVeiculo(const Veiculo& veiculo) {
 void Console::imprimirDadosCarro(const Carro& carro) {
 	imprimirDadosVeiculo(carro);
     std::cout << "Portas: " << carro.getPortas() << '\n';
-    // std::cout << "Categoria: " << carro.getCategoria() << '\n';
+    std::cout << "Categoria: " << carro.getNomeCategoria() << '\n';
 }
 
 void Console::imprimirDadosMotocicleta(const Motocicleta& moto) {

@@ -1,11 +1,13 @@
 #ifndef CARRO_HPP
 #define CARRO_HPP
 
+#include <unordered_map>
+
 #include "Veiculo.hpp"
 
 namespace locadora {
 
-enum class EnumCategoria { SEDAN, HATCH, SUV };
+enum class EnumCategoria { CAMINHONETE, HATCH, SEDAN, SUV };
 
 class Carro : public Veiculo {
    public:
@@ -24,6 +26,7 @@ class Carro : public Veiculo {
 
     EnumCategoria getCategoria() const;
     void setCategoria(const EnumCategoria categoria);
+    std::string getNomeCategoria() const;
 
    private:
     unsigned short int portas;
