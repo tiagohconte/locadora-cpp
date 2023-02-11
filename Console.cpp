@@ -21,7 +21,7 @@ void Console::imprimirDadosVeiculo(const Veiculo& veiculo) {
 }
 
 void Console::imprimirDadosCarro(const Carro& carro) {
-	imprimirDadosVeiculo(carro);
+    imprimirDadosVeiculo(carro);
     std::cout << "Portas: " << carro.getPortas() << '\n';
     std::cout << "Categoria: " << carro.getNomeCategoria() << '\n';
 }
@@ -31,9 +31,15 @@ void Console::imprimirDadosMotocicleta(const Motocicleta& moto) {
     std::cout << "Cilindrada: " << moto.getCilindrada() << '\n';
 }
 
-void Console::imprimirCatalogo(const Catalogo& catalogo) {
-    for (Veiculo *v: catalogo.getCatalogo()) {
+void Console::imprimirCatalogoVeiculos(const Catalogo& catalogo) {
+    for (Veiculo* v : catalogo.getVeiculos()) {
         Console::imprimirDadosVeiculo(*v);
         std::cout << std::endl;
+    }
+}
+
+void Console::imprimirCatalogoMarcas(const Catalogo& catalogo) {
+    for (Marca* m : catalogo.getMarcas()) {
+        std::cout << m->getNome() << std::endl;
     }
 }

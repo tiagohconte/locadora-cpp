@@ -15,7 +15,8 @@ class Console {
     static void imprimirDadosVeiculo(const Veiculo& veiculo);
     static void imprimirDadosCarro(const Carro& carro);
     static void imprimirDadosMotocicleta(const Motocicleta& moto);
-    static void imprimirCatalogo(const Catalogo& catalogo);
+    static void imprimirCatalogoVeiculos(const Catalogo& catalogo);
+    static void imprimirCatalogoMarcas(const Catalogo& catalogo);
 };
 }  // namespace locadora
 #endif
