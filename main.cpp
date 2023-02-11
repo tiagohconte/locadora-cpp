@@ -9,10 +9,13 @@
 #include "Placa.hpp"
 #include "Veiculo.hpp"
 
+#include  <unistd.h>
+
 using namespace locadora;
 
+Catalogo catalogo;
+
 int main() {
-    Catalogo catalogo;
 
     Marca *chev = new Marca{"Chevrolet"};
     catalogo.adicionarMarca(chev);
@@ -44,6 +47,10 @@ int main() {
         std::cout << "O que você quer fazer?" << std::endl
                   << "1) Cadastrar veículo" << std::endl
                   << "2) Listar veículos" << std::endl
+                  << "3) Cadastrar marca" << std::endl
+                  << "4) Listar marcas" << std::endl
+                  << "5) Cadastrar cliente" << std::endl
+                  << "6) Listar clientes" << std::endl
                   << "0) Fechar programa" << std::endl
                   << std::endl;
 
@@ -51,11 +58,30 @@ int main() {
 
         switch (op) {
             case 1:
-                // Interface::cadastroVeiculo();
+                Interface::cadastrarVeiculo();
                 break;
 
             case 2:
+                std::cout << "Veículos cadastrados:" << std::endl;
                 Console::imprimirCatalogoVeiculos(catalogo);
+                break;
+
+            case 3:
+                Interface::cadastrarMarca();
+                break;
+
+            case 4:
+                std::cout << "Marcas cadastradas:" << std::endl;
+                Console::imprimirCatalogoMarcas(catalogo);
+                std::cout << std::endl;
+                break;
+
+            case 5:
+                Interface::cadastrarCliente();
+                break;
+
+            case 6:
+                Console::imprimirCatalogoClientes(catalogo);
                 break;
 
             case 0:
@@ -66,10 +92,14 @@ int main() {
                 for (Marca *m : catalogo.getMarcas()) {
                     catalogo.removerMarca(m);
                 }
+                for (Cliente *c : catalogo.getClientes()) {
+                    catalogo.removerCliente(c);
+                }
                 exit(0);
                 break;
 
             default:
+                std::cout << "Opção inválida" << std::endl;
                 break;
         }
     }

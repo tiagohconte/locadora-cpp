@@ -8,6 +8,12 @@
 namespace locadora {
 
 enum class EnumCategoria { CAMINHONETE, HATCH, SEDAN, SUV };
+static std::unordered_map<EnumCategoria, std::string> nomeCategoria = {
+      {EnumCategoria::CAMINHONETE, "Caminhonete"},
+      {EnumCategoria::HATCH, "Hatch"},
+      {EnumCategoria::SEDAN, "Sedan"},
+      {EnumCategoria::SUV, "SUV"}
+};
 
 class Carro : public Veiculo {
    public:

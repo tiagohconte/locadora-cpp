@@ -40,6 +40,17 @@ void Console::imprimirCatalogoVeiculos(const Catalogo& catalogo) {
 
 void Console::imprimirCatalogoMarcas(const Catalogo& catalogo) {
     for (Marca* m : catalogo.getMarcas()) {
-        std::cout << m->getNome() << std::endl;
+        std::cout << m->getId() << ") " << m->getNome() << std::endl;
+    }
+}
+
+void Console::imprimirDadosCliente(const Cliente& cliente) {
+    std::cout << "Nome: " << cliente.getNome();
+}
+
+void Console::imprimirCatalogoClientes(const Catalogo& catalogo) {
+    for (Cliente* v : catalogo.getClientes()) {
+        Console::imprimirDadosCliente(*v);
+        std::cout << std::endl;
     }
 }

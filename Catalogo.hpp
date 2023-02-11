@@ -3,6 +3,7 @@
 
 #include <list>
 
+#include "Cliente.hpp"
 #include "Marca.hpp"
 #include "Veiculo.hpp"
 
@@ -12,18 +13,24 @@ class Catalogo {
     Catalogo();
     virtual ~Catalogo() = default;
 
-    std::list<Veiculo*> getVeiculos() const;
+    std::list<Cliente*> getClientes() const;
     std::list<Marca*> getMarcas() const;
+    std::list<Veiculo*> getVeiculos() const;
+
+    void adicionarCliente(Cliente* const cliente);
+    void removerCliente(Cliente* const cliente);
+
+    void adicionarMarca(Marca* const marca);
+    void removerMarca(Marca* const marca);
+    Marca* getMarcaById(const unsigned int id);
 
     void adicionarVeiculo(Veiculo* const veiculo);
     void removerVeiculo(Veiculo* const veiculo);
 
-    void adicionarMarca(Marca* const marca);
-    void removerMarca(Marca* const marca);
-
    private:
-    std::list<Veiculo*> veiculos;
+    std::list<Cliente*> clientes;
     std::list<Marca*> marcas;
+    std::list<Veiculo*> veiculos;
 };
 }  // namespace locadora
 

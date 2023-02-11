@@ -3,8 +3,14 @@
 
 using namespace locadora;
 
+unsigned int Marca::proxId{0};
+
 Marca::Marca(const std::string& nome)
-    : nome{nome} {}
+    : id{Marca::proxId}, nome{nome} {
+    Marca::proxId++;
+}
+
+unsigned int Marca::getId() const { return id; }
 
 std::string Marca::getNome() const { return this->nome; }
 
