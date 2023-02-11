@@ -9,6 +9,11 @@ class Motocicleta : public Veiculo {
     Motocicleta(Marca* const marca, const std::string& modelo,
                 const float custo, const unsigned short int capacidade,
                 const Placa& placa, const unsigned short int cilindrada);
+
+    Motocicleta(Marca* const marca, const std::string& modelo,
+                const float custo, const unsigned short int capacidade,
+                const std::string& placa, const unsigned short int cilindrada);
+
     virtual ~Motocicleta() = default;
 
     unsigned short int getCilindrada() const;

@@ -13,6 +13,10 @@ class Carro : public Veiculo {
           const unsigned short int capacidade, const Placa& placa,
           const unsigned short int portas, const EnumCategoria categoria);
 
+    Carro(Marca* const marca, const std::string& modelo, const float custo,
+          const unsigned short int capacidade, const std::string& placa,
+          const unsigned short int portas, const EnumCategoria categoria);
+
     virtual ~Carro() = default;
 
     unsigned short int getPortas() const;

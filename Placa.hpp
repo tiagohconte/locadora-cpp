@@ -24,8 +24,8 @@ class Placa {
     // bool operator<=(const Placa& outro) const;
     // bool operator>=(const Placa& outro) const;
 
-    // const Placa& operator=(const Placa& outro);
-    // const Placa& operator=(const unsigned long numero);
+    const Placa& operator=(const Placa& outro);
+    const Placa& operator=(const std::string& valor);
 
     char operator[](short int idx) const;
     std::string operator()(short int inicio, short int tam) const;

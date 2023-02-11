@@ -18,6 +18,18 @@ void Placa::setValor(const std::string& valor) {
     this->valor = valor;
 }
 
+const Placa& Placa::operator=(const Placa& outro) {
+    if (&outro != this) {
+        this->valor = outro.valor;
+    }
+    return *this;
+}
+
+const Placa& Placa::operator=(const std::string& valor) {
+    this->setValor(valor);
+    return *this;
+}
+
 char Placa::operator[](short int idx) const {
     if (idx < 0 || idx > 6)
         throw std::out_of_range{"O indice precisa estar entre 0 e 6."};

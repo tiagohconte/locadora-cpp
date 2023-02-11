@@ -15,6 +15,9 @@ class Veiculo {
      Veiculo(Marca* const marca, const std::string& modelo, const float custo,
              const unsigned short int capacidade, const Placa& placa);
 
+     Veiculo(Marca* const marca, const std::string& modelo, const float custo,
+             const unsigned short int capacidade, const std::string& placa);
+
      virtual ~Veiculo() = default;
 
      unsigned int getId() const;

@@ -19,6 +19,20 @@ Veiculo::Veiculo(Marca* const marca, const std::string& modelo,
     this->setMarca(marca);
 }
 
+Veiculo::Veiculo(Marca* const marca, const std::string& modelo,
+                 const float custo, const unsigned short int capacidade,
+                 const std::string& placa)
+    : id{Veiculo::proxId},
+      marca{nullptr},
+      modelo{modelo},
+      custo{custo},
+      capacidade{capacidade},
+      placa{placa},
+      status{EnumStatus::DISPONIVEL} {
+    Veiculo::proxId++;
+    this->setMarca(marca);
+}
+
 unsigned int Veiculo::getId() const { return id; }
 
 const Marca* Veiculo::getMarca() const { return this->marca; }
