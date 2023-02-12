@@ -65,7 +65,8 @@ int main() {
 
             case 2:
                 std::cout << "1) Listar todos os veículos" << std::endl
-                          << "2) Listar veículos disponíveis" << std::endl;
+                          << "2) Listar veículos disponíveis" << std::endl
+                          << "3) Listar veículos de uma marca" << std::endl;
 
                 std::cin >> subop;
 
@@ -75,6 +76,9 @@ int main() {
                 } else if (subop == 2) {
                     std::cout << "Veículos disponíveis:" << std::endl;
                     Console::imprimirVeiculosDisponiveis(catalogo);
+                } else if (subop == 3) {
+                    std::cout << std::endl;
+                    Console::imprimirVeiculosMarca(catalogo);
                 }
 
                 std::cout << std::endl;

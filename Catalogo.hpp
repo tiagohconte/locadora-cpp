@@ -22,7 +22,7 @@ class Catalogo {
 
     void adicionarMarca(Marca* const marca);
     void removerMarca(Marca* const marca);
-    Marca* getMarcaById(const unsigned int id);
+    Marca* getMarcaById(const unsigned int id) const;
 
     void adicionarVeiculo(Veiculo* const veiculo);
     void removerVeiculo(Veiculo* const veiculo);

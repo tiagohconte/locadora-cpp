@@ -28,12 +28,12 @@ void Catalogo::removerMarca(Marca* const marca) {
     delete marca;
 }
 
-Marca* Catalogo::getMarcaById(const unsigned int id) {
-    std::list<Marca*>::iterator it;
+Marca* Catalogo::getMarcaById(const unsigned int id) const {
+    std::list<Marca*>::const_iterator it;
 
     for (it = this->marcas.begin(); it != this->marcas.end(); it++)
         if ((*it)->getId() == id) return (*it);
-    
+
     return nullptr;
 }
 

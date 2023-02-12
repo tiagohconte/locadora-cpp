@@ -19,6 +19,7 @@ class Console {
     static void imprimirCatalogoMarcas(const Catalogo& catalogo);
 
     static void imprimirVeiculosDisponiveis(const Catalogo& catalogo);
+    static void imprimirVeiculosMarca(const Catalogo& catalogo);
 
     static void imprimirDadosCliente(const Cliente& cliente);
     static void imprimirCatalogoClientes(const Catalogo& catalogo);

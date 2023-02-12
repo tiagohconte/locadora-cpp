@@ -54,6 +54,23 @@ void Console::imprimirVeiculosDisponiveis(const Catalogo& catalogo) {
     }
 }
 
+void Console::imprimirVeiculosMarca(const Catalogo& catalogo) {
+
+    int op;
+    std::cout << std::endl << "Marcas cadastradas:" << std::endl;
+    Console::imprimirCatalogoMarcas(catalogo);
+    std::cout << std::endl << "Escolha uma marca: ";
+    std::cin >> op;
+    Marca* marca = catalogo.getMarcaById(op);
+
+    for (Veiculo* v: catalogo.getVeiculos()) {
+        if (v->getMarca()->getId() == marca->getId()) {
+            Console::imprimirDadosVeiculo(*v);
+            std::cout << std::endl;
+        }
+    }
+}
+
 void Console::imprimirDadosCliente(const Cliente& cliente) {
     std::cout << "Nome: " << cliente.getNome() << '\n';
     std::cout << "CPF: " << cliente.getCpf() << std::endl;
