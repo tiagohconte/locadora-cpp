@@ -11,6 +11,7 @@ class Interface {
     static void cadastrarCliente();
     static void cadastrarMarca();
     static void cadastrarVeiculo();
+    static void criarContrato();
 };
 }  // namespace locadora
 

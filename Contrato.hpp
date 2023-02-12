@@ -19,8 +19,8 @@ class Contrato {
         unsigned short int getDuracao() const;
         void setDuracao(const unsigned int duracao);
 
-        float getPreco() const;
-    
+        virtual float getPreco() const;
+
     private:
         Cliente *cliente;
         Veiculo *veiculo;

@@ -18,6 +18,7 @@ void Console::imprimirDadosVeiculo(const Veiculo& veiculo) {
     std::cout << "Modelo: " << veiculo.getModelo() << '\n';
     std::cout << "Custo: " << veiculo.getCusto() << '\n';
     std::cout << "Capacidade: " << veiculo.getCapacidade() << '\n';
+
 }
 
 void Console::imprimirDadosCarro(const Carro& carro) {
@@ -44,8 +45,18 @@ void Console::imprimirCatalogoMarcas(const Catalogo& catalogo) {
     }
 }
 
+void Console::imprimirVeiculosDisponiveis(const Catalogo& catalogo) {
+    for (Veiculo* v : catalogo.getVeiculos()) {
+        if (v->getStatus() == EnumStatus::DISPONIVEL) {
+            Console::imprimirDadosVeiculo(*v);
+            std::cout << std::endl;
+        }
+    }
+}
+
 void Console::imprimirDadosCliente(const Cliente& cliente) {
-    std::cout << "Nome: " << cliente.getNome();
+    std::cout << "Nome: " << cliente.getNome() << '\n';
+    std::cout << "CPF: " << cliente.getCpf() << std::endl;
 }
 
 void Console::imprimirCatalogoClientes(const Catalogo& catalogo) {

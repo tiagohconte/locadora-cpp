@@ -2,8 +2,11 @@
 
 #include <iostream>
 
+#include "Cliente.hpp"
+#include "CPF.hpp"
 #include "Carro.hpp"
 #include "Console.hpp"
+#include "Contrato.hpp"
 #include "Marca.hpp"
 #include "Motocicleta.hpp"
 #include "CPFInvalidoException.hpp"
@@ -13,17 +16,20 @@ using namespace locadora;
 extern Catalogo catalogo;
 
 void Interface::cadastrarCliente() {
-    std::string nome;
+    std::string nome, sobrenome;
     unsigned long cpf;
 
     std::cout << std::endl << "Nome: ";
     std::cin >> nome;
 
+    std::cout << std::endl << "Sobreome: ";
+    std::cin >> sobrenome;
+
     std::cout << std::endl << "CPF: ";
     std::cin >> cpf;
 
     try {
-        catalogo.adicionarCliente(new Cliente{nome, cpf});
+        catalogo.adicionarCliente(new Cliente{nome + ' ' + sobrenome, cpf});
         std::cout << "Cliente cadastrado com sucesso" << std::endl;
     } catch (CPFInvalidoException &cpfe) {
         std::cout << "Erro de CPF: " << cpfe.what() << std::endl;
@@ -117,4 +123,38 @@ void Interface::cadastrarVeiculo() {
             std::cout << "Opção inválida" << std::endl;
             break;
     }
+}
+
+void Interface::criarContrato() {
+
+    unsigned long cpf;
+    unsigned int id, duracao;
+
+
+    std::cout << "CPF do contratante: ";
+    std::cin >> cpf;
+
+    Cliente *cliente{nullptr};
+    for (Cliente* c: catalogo.getClientes()) {
+        if (c->getCpf() == cpf) {
+            cliente = c;
+            break;
+        }
+    }
+
+    std::cout << "Id do veículo: ";
+    std::cin >> id;
+
+    Veiculo *veiculo{nullptr};
+    for (Veiculo* v: catalogo.getVeiculos()) {
+        if (v->getId() == id) {
+            veiculo = v;
+            break;
+        }
+    }
+
+    std::cout << "Duracao: ";
+    std::cin >> duracao;
+
+    Contrato cont{cliente, veiculo, duracao};
 }

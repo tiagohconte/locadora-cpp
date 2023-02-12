@@ -8,7 +8,7 @@
 #include "Marca.hpp"
 #include "Placa.hpp"
 #include "Veiculo.hpp"
-
+#include "Contrato.hpp"
 #include  <unistd.h>
 
 using namespace locadora;
@@ -41,7 +41,7 @@ int main() {
               << "Bem-vindo ao sistema de locação :)" << std::endl
               << std::endl;
 
-    int op;
+    int op, subop;
 
     while (true) {
         std::cout << "O que você quer fazer?" << std::endl
@@ -51,6 +51,7 @@ int main() {
                   << "4) Listar marcas" << std::endl
                   << "5) Cadastrar cliente" << std::endl
                   << "6) Listar clientes" << std::endl
+                  << "7) Criar contrato" << std::endl
                   << "0) Fechar programa" << std::endl
                   << std::endl;
 
@@ -59,11 +60,24 @@ int main() {
         switch (op) {
             case 1:
                 Interface::cadastrarVeiculo();
+                std::cout << std::endl;
                 break;
 
             case 2:
-                std::cout << "Veículos cadastrados:" << std::endl;
-                Console::imprimirCatalogoVeiculos(catalogo);
+                std::cout << "1) Listar todos os veículos" << std::endl
+                          << "2) Listar veículos disponíveis" << std::endl;
+
+                std::cin >> subop;
+
+                if (subop == 1) {
+                    std::cout << "Veículos cadastrados:" << std::endl;
+                    Console::imprimirCatalogoVeiculos(catalogo);
+                } else if (subop == 2) {
+                    std::cout << "Veículos disponíveis:" << std::endl;
+                    Console::imprimirVeiculosDisponiveis(catalogo);
+                }
+
+                std::cout << std::endl;
                 break;
 
             case 3:
@@ -78,12 +92,18 @@ int main() {
 
             case 5:
                 Interface::cadastrarCliente();
+                std::cout << std::endl;
                 break;
 
             case 6:
                 Console::imprimirCatalogoClientes(catalogo);
+                std::cout << std::endl;
                 break;
 
+            case 7:
+                Interface::criarContrato();
+                std::cout << std::endl;
+                break;
             case 0:
                 std::cout << "Até mais :)" << std::endl;
                 for (Veiculo *v : catalogo.getVeiculos()) {
