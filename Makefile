@@ -1,6 +1,7 @@
 # Makefile
 
 # define as flags
+MAKEFLAGS = --jobs=$(shell nproc)
 CC = g++
 CPPFLAGS = -Wall -std=c++17
 
