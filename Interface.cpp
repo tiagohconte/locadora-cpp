@@ -127,31 +127,37 @@ void Interface::cadastrarVeiculo() {
 }
 
 void Interface::criarContrato() {
-
     unsigned long cpf;
     unsigned int id, duracao;
-
 
     std::cout << "CPF do contratante: ";
     std::cin >> cpf;
 
-    Cliente *cliente{nullptr};
-    for (Cliente* c: catalogo.getClientes()) {
+    Cliente* cliente{nullptr};
+    for (Cliente* c : catalogo.getClientes()) {
         if (c->getCpf() == cpf) {
             cliente = c;
             break;
         }
     }
+    if (cliente == nullptr) {
+        std::cout << "Cliente não existe" << std::endl;
+        return;
+    }
 
-    std::cout << "Id do veículo: ";
+    std::cout << "ID do veículo: ";
     std::cin >> id;
 
-    Veiculo *veiculo{nullptr};
-    for (Veiculo* v: catalogo.getVeiculos()) {
+    Veiculo* veiculo{nullptr};
+    for (Veiculo* v : catalogo.getVeiculos()) {
         if (v->getId() == id) {
             veiculo = v;
             break;
         }
+    }
+    if (veiculo == nullptr) {
+        std::cout << "Veículo não existe" << std::endl;
+        return;
     }
 
     std::cout << "Duracao: ";
