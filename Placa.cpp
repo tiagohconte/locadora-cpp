@@ -48,6 +48,9 @@ std::string Placa::operator()(short int inicio, short int tam) const {
 
 bool Placa::validarPlaca(const std::string& placa) const {
     int i;
+
+    if (placa.length() != 7) return false;
+
     for (i = 0; i < 3; i++)
         if (!std::isalpha(placa[i])) return false;
 
