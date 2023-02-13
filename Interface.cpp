@@ -48,15 +48,16 @@ void Interface::cadastrarMarca() {
 }
 
 void Interface::cadastrarVeiculo() {
-    int op, capacidade;
+    char op;
+    int capacidade, id;
     std::string modelo, placa;
     float custo;
 
     std::cout << std::endl << "Marcas cadastradas:" << std::endl;
     Console::imprimirCatalogoMarcas(catalogo);
     std::cout << std::endl << "Escolha uma marca: ";
-    std::cin >> op;
-    Marca* marca = catalogo.getMarcaById(op);
+    std::cin >> id;
+    Marca* marca = catalogo.getMarcaById(id);
 
     std::cout << std::endl << "Modelo: ";
     std::cin >> modelo;
@@ -78,7 +79,7 @@ void Interface::cadastrarVeiculo() {
     std::cin >> op;
 
     switch (op) {
-        case 1:
+        case '1':
             int portas, categoria;
 
             std::cout << std::endl << "Portas: ";
@@ -104,7 +105,7 @@ void Interface::cadastrarVeiculo() {
 
             break;
 
-        case 2:
+        case '2':
             int cilindrada;
 
             std::cout << std::endl << "Portas: ";

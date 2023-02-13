@@ -41,7 +41,7 @@ int main() {
               << "Bem-vindo ao sistema de locação :)" << std::endl
               << std::endl;
 
-    int op, subop;
+    char op, subop;
 
     while (true) {
         std::cout << "O que você quer fazer?" << std::endl
@@ -52,31 +52,32 @@ int main() {
                   << "5) Cadastrar cliente" << std::endl
                   << "6) Listar clientes" << std::endl
                   << "7) Criar contrato" << std::endl
-                  << "0) Fechar programa" << std::endl
+                  << "q) Fechar programa" << std::endl
                   << std::endl;
 
         std::cin >> op;
 
         switch (op) {
-            case 1:
+            case '1':
                 Interface::cadastrarVeiculo();
                 std::cout << std::endl;
                 break;
 
-            case 2:
+            case '2':
                 std::cout << "1) Listar todos os veículos" << std::endl
                           << "2) Listar veículos disponíveis" << std::endl
-                          << "3) Listar veículos de uma marca" << std::endl;
+                          << "3) Listar veículos de uma marca" << std::endl
+                          << std::endl;
 
                 std::cin >> subop;
 
-                if (subop == 1) {
+                if (subop == '1') {
                     std::cout << "Veículos cadastrados:" << std::endl;
                     Console::imprimirCatalogoVeiculos(catalogo);
-                } else if (subop == 2) {
+                } else if (subop == '2') {
                     std::cout << "Veículos disponíveis:" << std::endl;
                     Console::imprimirVeiculosDisponiveis(catalogo);
-                } else if (subop == 3) {
+                } else if (subop == '3') {
                     std::cout << std::endl;
                     Console::imprimirVeiculosMarca(catalogo);
                 }
@@ -84,31 +85,31 @@ int main() {
                 std::cout << std::endl;
                 break;
 
-            case 3:
+            case '3':
                 Interface::cadastrarMarca();
                 break;
 
-            case 4:
+            case '4':
                 std::cout << "Marcas cadastradas:" << std::endl;
                 Console::imprimirCatalogoMarcas(catalogo);
                 std::cout << std::endl;
                 break;
 
-            case 5:
+            case '5':
                 Interface::cadastrarCliente();
                 std::cout << std::endl;
                 break;
 
-            case 6:
+            case '6':
                 Console::imprimirCatalogoClientes(catalogo);
                 std::cout << std::endl;
                 break;
 
-            case 7:
+            case '7':
                 Interface::criarContrato();
                 std::cout << std::endl;
                 break;
-            case 0:
+            case 'q':
                 std::cout << "Até mais :)" << std::endl;
                 for (Veiculo *v : catalogo.getVeiculos()) {
                     catalogo.removerVeiculo(v);
