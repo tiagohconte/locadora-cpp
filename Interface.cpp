@@ -30,11 +30,11 @@ void Interface::cadastrarCliente() {
 
     try {
         catalogo.adicionarCliente(new Cliente{nome + ' ' + sobrenome, cpf});
-        std::cout << "Cliente cadastrado com sucesso" << std::endl;
+        std::cout << "\033[32mCliente cadastrado com sucesso\033[0m" << std::endl;
     } catch (CPFInvalidoException &cpfe) {
-        std::cout << "Erro de CPF: " << cpfe.what() << std::endl;
+        std::cout << "\033[31mErro de CPF: " << cpfe.what() << "\033[0m" << std::endl;
     } catch (std::exception& e) {
-        std::cerr << e.what() << std::endl;
+        std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
     }
 }
 
@@ -71,7 +71,8 @@ void Interface::cadastrarVeiculo() {
     std::cout << std::endl << "Placa (sem -): ";
     std::cin >> placa;
 
-    std::cout << "Qual é o tipo de veículo?" << std::endl
+    std::cout << std::endl
+              << "Qual é o tipo de veículo?" << std::endl
               << "1) Carro" << std::endl
               << "2) Motocicleta" << std::endl
               << std::endl;
@@ -98,30 +99,34 @@ void Interface::cadastrarVeiculo() {
                                                     capacidade, placa, portas,
                                                     (EnumCategoria)categoria));
             } catch (std::exception& e) {
-                std::cerr << e.what() << '\n';
+                std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+                return;
             }
 
-            std::cout << "Carro cadastrado com sucesso" << std::endl;
+            std::cout << "\033[32mCarro cadastrado com sucesso\033[0m" << std::endl;
 
             break;
 
         case '2':
             int cilindrada;
 
-            std::cout << std::endl << "Portas: ";
+            std::cout << std::endl << "Cilindrada: ";
             std::cin >> cilindrada;
 
             try {
                 catalogo.adicionarVeiculo(new Motocicleta(
                     marca, modelo, custo, capacidade, placa, cilindrada));
             } catch (std::exception& e) {
-                std::cerr << e.what() << '\n';
+                std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+                return;
             }
+
+            std::cout << "\033[32mMotocicleta cadastrada com sucesso\033[0m" << std::endl;
 
             break;
 
         default:
-            std::cout << "Opção inválida" << std::endl;
+            std::cout << "\033[31mOpção inválida\033[0m" << std::endl;
             break;
     }
 }
@@ -141,7 +146,7 @@ void Interface::criarContrato() {
         }
     }
     if (cliente == nullptr) {
-        std::cout << "Cliente não existe" << std::endl;
+        std::cout << "\033[31mCliente não existe\033[0m" << std::endl;
         return;
     }
 
@@ -156,7 +161,7 @@ void Interface::criarContrato() {
         }
     }
     if (veiculo == nullptr) {
-        std::cout << "Veículo não existe" << std::endl;
+        std::cout << "\033[31mVeículo não existe\033[0m" << std::endl;
         return;
     }
 
