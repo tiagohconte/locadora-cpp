@@ -37,8 +37,11 @@ int main() {
                             locadora::EnumCategoria::HATCH);
     catalogo.adicionarVeiculo(onix);
 
+    Cliente *cliente = new Cliente{"Rubens Costa", 11111111111};
+    catalogo.adicionarCliente(cliente);
+
     std::cout << std::endl
-              << "Bem-vindo ao sistema de locação :)" << std::endl
+              << "\033[1;36mBem-vindo ao sistema de locação :)\033[0m" << std::endl
               << std::endl;
 
     char op, subop;
@@ -82,7 +85,6 @@ int main() {
                     Console::imprimirVeiculosMarca(catalogo);
                 }
 
-                std::cout << std::endl;
                 break;
 
             case '3':
@@ -92,7 +94,6 @@ int main() {
             case '4':
                 std::cout << "Marcas cadastradas:" << std::endl;
                 Console::imprimirCatalogoMarcas(catalogo);
-                std::cout << std::endl;
                 break;
 
             case '5':
@@ -102,15 +103,14 @@ int main() {
 
             case '6':
                 Console::imprimirCatalogoClientes(catalogo);
-                std::cout << std::endl;
                 break;
 
             case '7':
                 Interface::criarContrato();
                 std::cout << std::endl;
                 break;
+
             case 'q':
-                std::cout << "Até mais :)" << std::endl;
                 for (Veiculo *v : catalogo.getVeiculos()) {
                     catalogo.removerVeiculo(v);
                 }
@@ -120,6 +120,7 @@ int main() {
                 for (Cliente *c : catalogo.getClientes()) {
                     catalogo.removerCliente(c);
                 }
+                std::cout << "\033[1;35mAté mais :)\033[0m" << std::endl;
                 exit(0);
                 break;
 

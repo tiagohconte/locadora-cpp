@@ -22,7 +22,7 @@ void Interface::cadastrarCliente() {
     std::cout << std::endl << "Nome: ";
     std::cin >> nome;
 
-    std::cout << std::endl << "Sobreome: ";
+    std::cout << std::endl << "Sobrenome: ";
     std::cin >> sobrenome;
 
     std::cout << std::endl << "CPF: ";
