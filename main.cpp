@@ -81,7 +81,6 @@ int main() {
                     std::cout << "Veículos disponíveis:" << std::endl;
                     Console::imprimirVeiculosDisponiveis(catalogo);
                 } else if (subop == '3') {
-                    std::cout << std::endl;
                     Console::imprimirVeiculosMarca(catalogo);
                 }
 
