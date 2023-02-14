@@ -62,9 +62,11 @@ void Console::imprimirVeiculosMarca(const Catalogo& catalogo) {
     std::cin >> id;
     Marca* marca = catalogo.getMarcaById(id);
 
-    for (Veiculo* v : (*marca).getVeiculos()) {
-        Console::imprimirDadosVeiculo(*v);
-        std::cout << std::endl;
+    if (marca != nullptr) {
+        for (Veiculo* v : (*marca).getVeiculos()) {
+            Console::imprimirDadosVeiculo(*v);
+            std::cout << std::endl;
+        }
     }
 }
 
