@@ -40,7 +40,7 @@ int main() {
     Cliente *rubens = new Cliente{"Rubens Costa", 11111111111};
     catalogo.adicionarCliente(rubens);
 
-    Contrato *contrato = new Contrato{rubens, onix, 2};
+    new Contrato{rubens, onix, 2};
 
     std::cout << std::endl
               << "\033[1;36mBem-vindo ao sistema de locação :)\033[0m" << std::endl
