@@ -19,6 +19,7 @@ class Catalogo {
 
     void adicionarCliente(Cliente* const cliente);
     void removerCliente(Cliente* const cliente);
+    Cliente* getClienteByCPF(const CPF& cpf) const;
 
     void adicionarMarca(Marca* const marca);
     void removerMarca(Marca* const marca);

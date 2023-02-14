@@ -2,9 +2,9 @@
 #define CONTRATO_HPP
 
 #include "Veiculo.hpp"
-#include "Cliente.hpp"
 
 namespace locadora {
+class Cliente;
 class Contrato {
     public:
         Contrato(Cliente* const cliente, Veiculo* const veiculo, const unsigned int duracao);

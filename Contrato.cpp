@@ -7,22 +7,26 @@ using namespace locadora;
 Contrato::Contrato(Cliente* const cliente, Veiculo* const veiculo, const unsigned int duracao)
     : cliente{nullptr}, veiculo{nullptr}, duracao{duracao}
 {
-    this->cliente = cliente;
-
-    if (this->veiculo != nullptr) {
-        this->veiculo = veiculo;
-        veiculo->setStatus(EnumStatus::INDISPONIVEL);
-    }
-
+    this->setCliente(cliente);
+    this->setVeiculo(veiculo);
 }
 
 Cliente* Contrato::getCliente() const { return this->cliente; }
 
-void Contrato::setCliente(Cliente* const cliente) { this->cliente = cliente; }
+void Contrato::setCliente(Cliente* const cliente) {
+    if (this->cliente != nullptr)
+        this->cliente->contratos.remove(this);
+    this->cliente = cliente;
+    if (this->cliente != nullptr)
+        this->cliente->contratos.push_back(this);
+}
 
 Veiculo* Contrato::getVeiculo() const { return this->veiculo; }
 
-void Contrato::setVeiculo(Veiculo* const veiculo) { this->veiculo = veiculo; }
+void Contrato::setVeiculo(Veiculo* const veiculo) {
+    this->veiculo = veiculo;
+    if (this->veiculo != nullptr) veiculo->setStatus(EnumStatus::INDISPONIVEL);
+}
 
 unsigned short int Contrato::getDuracao() const { return this->duracao; }
 

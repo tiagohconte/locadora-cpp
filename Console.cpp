@@ -81,3 +81,30 @@ void Console::imprimirCatalogoClientes(const Catalogo& catalogo) {
         std::cout << std::endl;
     }
 }
+
+void Console::imprimirDadosContrato(const Contrato& contrato) {
+    Cliente *c = contrato.getCliente();
+    Veiculo *v = contrato.getVeiculo();
+    if (v == nullptr)
+        return;
+    const Marca *m = v->getMarca();
+
+    std::cout << "Cliente: " << c->getNome() << std::endl
+              << "Veículo: ID " << v->getId() << " / " << m->getNome() << " "
+              << v->getModelo() << std::endl
+              << "Duracao: " << contrato.getDuracao() << std::endl;
+}
+
+void Console::imprimirContratosCliente(const Catalogo& catalogo) {
+    unsigned long cpf;
+    std::cout << "CPF do cliente: ";
+    std::cin >> cpf;
+    Cliente* cliente = catalogo.getClienteByCPF(cpf);
+
+    if (cliente != nullptr) {
+        for (Contrato* c : (*cliente).getContratos()) {
+            Console::imprimirDadosContrato(*c);
+            std::cout << std::endl;
+        }
+    }
+}

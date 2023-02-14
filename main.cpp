@@ -37,8 +37,10 @@ int main() {
                             locadora::EnumCategoria::HATCH);
     catalogo.adicionarVeiculo(onix);
 
-    Cliente *cliente = new Cliente{"Rubens Costa", 11111111111};
-    catalogo.adicionarCliente(cliente);
+    Cliente *rubens = new Cliente{"Rubens Costa", 11111111111};
+    catalogo.adicionarCliente(rubens);
+
+    Contrato *contrato = new Contrato{rubens, onix, 2};
 
     std::cout << std::endl
               << "\033[1;36mBem-vindo ao sistema de locação :)\033[0m" << std::endl
@@ -55,6 +57,7 @@ int main() {
                   << "5) Cadastrar cliente" << std::endl
                   << "6) Listar clientes" << std::endl
                   << "7) Criar contrato" << std::endl
+                  << "8) Listar contratos do cliente" << std::endl
                   << "q) Fechar programa" << std::endl
                   << std::endl;
 
@@ -107,6 +110,10 @@ int main() {
             case '7':
                 Interface::criarContrato();
                 std::cout << std::endl;
+                break;
+
+            case '8':
+                Console::imprimirContratosCliente(catalogo);
                 break;
 
             case 'q':

@@ -23,6 +23,9 @@ class Console {
 
     static void imprimirDadosCliente(const Cliente& cliente);
     static void imprimirCatalogoClientes(const Catalogo& catalogo);
+
+    static void imprimirDadosContrato(const Contrato& contrato);
+    static void imprimirContratosCliente(const Catalogo& catalogo);
 };
 }  // namespace locadora
 #endif

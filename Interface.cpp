@@ -168,5 +168,5 @@ void Interface::criarContrato() {
     std::cout << "Duracao: ";
     std::cin >> duracao;
 
-    Contrato cont{cliente, veiculo, duracao};
+    Contrato *cont = new Contrato{cliente, veiculo, duracao};
 }

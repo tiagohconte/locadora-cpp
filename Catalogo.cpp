@@ -19,6 +19,15 @@ void Catalogo::removerCliente(Cliente* const cliente) {
     delete cliente;
 }
 
+Cliente* Catalogo::getClienteByCPF(const CPF& cpf) const {
+    for (Cliente* c : this->getClientes()) {
+        if (c->getCpf() == cpf) {
+            return c;
+        }
+    }
+    return nullptr;
+}
+
 void Catalogo::adicionarMarca(Marca* const marca) {
     this->marcas.push_back(marca);
 }

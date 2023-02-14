@@ -18,4 +18,6 @@ const CPF& Cliente::getCpf() const { return this->cpf; }
 
 void Cliente::setCpf(const CPF& cpf) { this->cpf = cpf; }
 
+std::list<Contrato*> Cliente::getContratos() const { return this->contratos; }
+
 }
