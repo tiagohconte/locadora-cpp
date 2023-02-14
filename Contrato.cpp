@@ -1,11 +1,12 @@
 #include "Contrato.hpp"
 #include "Cliente.hpp"
 #include "Veiculo.hpp"
+#include "VeiculoIndisponivelException.hpp"
 
 using namespace locadora;
 
 Contrato::Contrato(Cliente* const cliente, Veiculo* const veiculo, const unsigned int duracao)
-    : cliente{nullptr}, veiculo{nullptr}, duracao{duracao}
+    : cliente{nullptr}, veiculo{nullptr}, status{EnumContrato::ATIVO}, duracao{duracao}
 {
     this->setCliente(cliente);
     this->setVeiculo(veiculo);
@@ -24,9 +25,14 @@ void Contrato::setCliente(Cliente* const cliente) {
 Veiculo* Contrato::getVeiculo() const { return this->veiculo; }
 
 void Contrato::setVeiculo(Veiculo* const veiculo) {
+    if (veiculo->getStatus() == EnumStatus::INDISPONIVEL) throw VeiculoIndisponivelException{veiculo};
     this->veiculo = veiculo;
     if (this->veiculo != nullptr) veiculo->setStatus(EnumStatus::INDISPONIVEL);
 }
+
+EnumContrato Contrato::getStatus() const { return this->status; }
+
+void Contrato::setStatus(const EnumContrato status) { this->status = status; }
 
 unsigned short int Contrato::getDuracao() const { return this->duracao; }
 

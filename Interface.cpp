@@ -10,6 +10,7 @@
 #include "Marca.hpp"
 #include "Motocicleta.hpp"
 #include "CPFInvalidoException.hpp"
+#include "VeiculoIndisponivelException.hpp"
 
 using namespace locadora;
 
@@ -168,5 +169,10 @@ void Interface::criarContrato() {
     std::cout << "Duracao: ";
     std::cin >> duracao;
 
-    new Contrato{cliente, veiculo, duracao};
+    try {
+        new Contrato{cliente, veiculo, duracao};
+        std::cout << "\033[32mContrato criado com sucesso\033[0m" << std::endl;
+    } catch (VeiculoIndisponivelException& vie) {
+        std::cout << "\033[31mErro de Contrato: " << vie.what() << "\033[0m" << std::endl;
+    }
 }

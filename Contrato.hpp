@@ -4,6 +4,9 @@
 #include "Veiculo.hpp"
 
 namespace locadora {
+
+enum class EnumContrato {ATIVO, ENCERRADO};
+
 class Cliente;
 class Contrato {
     public:
@@ -16,6 +19,9 @@ class Contrato {
         Veiculo *getVeiculo() const;
         void setVeiculo(Veiculo* const veiculo);
 
+        EnumContrato getStatus() const;
+        void setStatus(const EnumContrato status);
+
         unsigned short int getDuracao() const;
         void setDuracao(const unsigned int duracao);
 
@@ -24,6 +30,7 @@ class Contrato {
     private:
         Cliente *cliente;
         Veiculo *veiculo;
+        EnumContrato status;
         unsigned int duracao;
 };
 }

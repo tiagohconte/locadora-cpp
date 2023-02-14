@@ -1,6 +1,7 @@
 #include "Console.hpp"
 
 #include <iostream>
+#include <iomanip>
 
 #include "Marca.hpp"
 
@@ -92,7 +93,8 @@ void Console::imprimirDadosContrato(const Contrato& contrato) {
     std::cout << "Cliente: " << c->getNome() << std::endl
               << "Veículo: ID " << v->getId() << " / " << m->getNome() << " "
               << v->getModelo() << std::endl
-              << "Duracao: " << contrato.getDuracao() << std::endl;
+              << "Duracao: " << contrato.getDuracao() << std::endl
+              << "Preço: R$" << std::setprecision(2) << std::fixed << contrato.getPreco() << std::endl;
 }
 
 void Console::imprimirContratosCliente(const Catalogo& catalogo) {

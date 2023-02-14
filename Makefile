@@ -5,7 +5,7 @@ MAKEFLAGS = --jobs=$(shell nproc)
 CC = g++
 CPPFLAGS = -Wall -std=c++17
 
-OBJS = Carro.o Catalogo.o Cliente.o Console.o Contrato.o ContratoSegurado.o CPF.o CPFInvalidoException.o Interface.o Marca.o Motocicleta.o Placa.o PlacaInvalidaException.o Veiculo.o
+OBJS = Carro.o Catalogo.o Cliente.o Console.o Contrato.o ContratoSegurado.o CPF.o CPFInvalidoException.o Interface.o Marca.o Motocicleta.o Placa.o PlacaInvalidaException.o Veiculo.o VeiculoIndisponivelException.o
 PROG = main
 
 # regra default
