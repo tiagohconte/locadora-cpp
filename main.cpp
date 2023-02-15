@@ -1,3 +1,5 @@
+#include <unistd.h>
+
 #include <iostream>
 
 #include "Catalogo.hpp"
@@ -8,15 +10,12 @@
 #include "Marca.hpp"
 #include "Placa.hpp"
 #include "Veiculo.hpp"
-#include "Contrato.hpp"
-#include  <unistd.h>
 
 using namespace locadora;
 
 Catalogo catalogo;
 
 int main() {
-
     Marca *chev = new Marca{"Chevrolet"};
     catalogo.adicionarMarca(chev);
     Marca *volks = new Marca{"Volkswagen"};
@@ -24,17 +23,20 @@ int main() {
     Marca *honda = new Marca{"Honda"};
     catalogo.adicionarMarca(honda);
 
-    catalogo.adicionarVeiculo(new Veiculo{volks, "Fusca", 10, 5, "BJF2353"});
-    catalogo.adicionarVeiculo(new Veiculo(chev, "Vectra", 10, 5, "ADF1F86"));
-    catalogo.adicionarVeiculo(new Veiculo(chev, "Celta", 5, 5, "MDF1D59"));
+    catalogo.adicionarVeiculo(new Carro{volks, "Fusca", 10, 5, "BJF2353", 2,
+                                        locadora::EnumCategoria::HATCH});
+    catalogo.adicionarVeiculo(new Carro{chev, "Vectra", 10, 5, "ADF1F86", 4,
+                                        locadora::EnumCategoria::SEDAN});
+    catalogo.adicionarVeiculo(new Carro{chev, "Celta", 5, 5, "MDF1D59", 2,
+                                        locadora::EnumCategoria::HATCH});
 
-    catalogo.adicionarVeiculo(new Carro(chev, "S10", 15, 2, "OFK3522", 2,
-                                        locadora::EnumCategoria::CAMINHONETE));
+    catalogo.adicionarVeiculo(new Carro{chev, "S10", 15, 2, "OFK3522", 2,
+                                        locadora::EnumCategoria::CAMINHONETE});
     catalogo.adicionarVeiculo(
-        new Motocicleta(honda, "CG150", 15, 2, "PRF1232", 150));
+        new Motocicleta{honda, "CG150", 15, 2, "PRF1232", 150});
 
-    Carro *onix = new Carro(chev, "Onix", 50, 5, "ACD1E45", 4,
-                            locadora::EnumCategoria::HATCH);
+    Carro *onix = new Carro{
+        chev, "Onix", 50, 5, "ACD1E45", 4, locadora::EnumCategoria::HATCH};
     catalogo.adicionarVeiculo(onix);
 
     Cliente *rubens = new Cliente{"Rubens Costa", 11111111111};
@@ -43,7 +45,8 @@ int main() {
     new Contrato{rubens, onix, 2};
 
     std::cout << std::endl
-              << "\033[1;36mBem-vindo ao sistema de locação :)\033[0m" << std::endl
+              << "\033[1;36mBem-vindo ao sistema de locação :)\033[0m"
+              << std::endl
               << std::endl;
 
     char op, subop;
@@ -86,7 +89,6 @@ int main() {
                 } else if (subop == '3') {
                     Console::imprimirVeiculosMarca(catalogo);
                 }
-
                 break;
 
             case '3':
