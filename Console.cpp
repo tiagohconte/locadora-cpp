@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 
+#include "CPFInvalidoException.hpp"
 #include "Marca.hpp"
 
 using namespace locadora;
@@ -50,15 +51,24 @@ void Console::imprimirCatalogoClientes(const Catalogo& catalogo) {
 }
 
 void Console::imprimirClienteCpf(const Catalogo& catalogo) {
+    Cliente* c;
     unsigned long cpf;
     std::cout << std::endl << "CPF do cliente: ";
     std::cin >> cpf;
 
-    for (Cliente* c: catalogo.getClientes()) {
-        if (c->getCpf().getNumero() == cpf) {
-            std::cout << *c << std::endl;
+    try {
+        c = catalogo.getClienteByCPF(cpf);
+        if (c != nullptr) {
+            std::cout << (*c);
             return;
         }
+    } catch (CPFInvalidoException &cpfe) {
+        std::cout << "\033[31mErro de CPF: " << cpfe.what() << "\033[0m"
+                  << std::endl;
+        return;
+    } catch (std::exception& e) {
+        std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+        return;
     }
 
     std::cout << "\033[31mCliente não cadastrado!\033[0m" << std::endl;
