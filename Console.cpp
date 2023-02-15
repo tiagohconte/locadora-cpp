@@ -62,9 +62,24 @@ void Console::imprimirCatalogoClientes(const Catalogo& catalogo) {
     }
 }
 
+void Console::imprimirClienteCpf(const Catalogo& catalogo) {
+    unsigned long cpf;
+    std::cout << std::endl << "CPF do cliente: ";
+    std::cin >> cpf;
+
+    for (Cliente* c: catalogo.getClientes()) {
+        if (c->getCpf().getNumero() == cpf) {
+            std::cout << *c << std::endl;
+            return;
+        }
+    }
+
+    std::cout << "\033[31mCliente não cadastrado!\033[0m" << std::endl;
+}
+
 void Console::imprimirContratosCliente(const Catalogo& catalogo) {
     unsigned long cpf;
-    std::cout << "CPF do cliente: ";
+    std::cout << std::endl << "CPF do cliente: ";
     std::cin >> cpf;
     Cliente* cliente = catalogo.getClienteByCPF(cpf);
 

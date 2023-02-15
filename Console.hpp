@@ -21,6 +21,7 @@ class Console {
     static void imprimirVeiculosMarca(const Catalogo& catalogo);
 
     static void imprimirCatalogoClientes(const Catalogo& catalogo);
+    static void imprimirClienteCpf(const Catalogo& catalogo);
 
     static void imprimirContratosCliente(const Catalogo& catalogo);
 };

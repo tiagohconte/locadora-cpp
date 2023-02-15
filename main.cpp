@@ -104,7 +104,16 @@ int main() {
                 break;
 
             case '6':
-                Console::imprimirCatalogoClientes(catalogo);
+                std::cout << "1) Listar todos os clientes" << std::endl
+                          << "2) Buscar cliente por CPF" << std::endl;
+                std::cin >> subop;
+
+                if (subop == '1')
+                    Console::imprimirCatalogoClientes(catalogo);
+                else if (subop == '2') {
+                    Console::imprimirClienteCpf(catalogo);
+                    std::cout << std::endl;
+                }
                 break;
 
             case '7':
