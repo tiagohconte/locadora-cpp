@@ -50,6 +50,11 @@ void Contrato::setDuracao(const unsigned int duracao) { this->duracao = duracao;
 
 float Contrato::getPreco() const { return this->duracao * this->getVeiculo()->getCusto(); }
 
+void Contrato::encerraContrato() {
+    this->veiculo->setStatus(EnumStatus::DISPONIVEL);
+    this->status = EnumContrato::ENCERRADO;
+}
+
 std::ostream& operator<<(std::ostream& stream, const Contrato& contrato) {
     Cliente *c = contrato.getCliente();
     Veiculo *v = contrato.getVeiculo();

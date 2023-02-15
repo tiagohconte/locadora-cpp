@@ -78,6 +78,7 @@ void Console::imprimirContratosCliente(const Catalogo& catalogo) {
     unsigned long cpf;
     std::cout << std::endl << "CPF do cliente: ";
     std::cin >> cpf;
+    char subop;
 
     std::cout << std::endl;
     try {
@@ -93,5 +94,26 @@ void Console::imprimirContratosCliente(const Catalogo& catalogo) {
         for (Contrato* c : (*cliente).getContratos()) {
             std::cout << *c << std::endl;
         }
+
+        std::cout << std::endl << "1) Encerrar um contrato" << std::endl
+            << "2) Sair" << std::endl;
+        std::cin >> subop;
+
+        if (subop == '1') {
+            unsigned int id;
+            std::cout << std::endl << "Id do contrato: ";
+            std::cin >> id;
+
+            for (Contrato* c : (*cliente).getContratos()) {
+                if (c->getId() == id) {
+                    c->encerraContrato();
+                    std::cout << "\033[32mContrato encerrado com sucesso!\033[0m" << std::endl;
+                    return;
+                }
+            }
+
+            std::cout << "\033[31mContrato não encontrado!\033[0m" << std::endl;
+        } else if (subop == '2')
+            std::cout << std::endl;
     }
 }

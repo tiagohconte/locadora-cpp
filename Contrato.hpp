@@ -33,6 +33,8 @@ class Contrato {
 
         virtual float getPreco() const;
 
+        void encerraContrato();
+
     private:
         static unsigned int proxId;
         unsigned int id;

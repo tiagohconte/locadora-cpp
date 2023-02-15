@@ -125,6 +125,7 @@ int main() {
 
             case '8':
                 Console::imprimirContratosCliente(catalogo);
+                std::cout << std::endl;
                 break;
 
             case 'q':
