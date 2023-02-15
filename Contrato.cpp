@@ -8,12 +8,19 @@
 
 namespace locadora {
 
+unsigned int Contrato::proxId{0};
+
 Contrato::Contrato(Cliente* const cliente, Veiculo* const veiculo, const unsigned int duracao)
-    : cliente{nullptr}, veiculo{nullptr}, status{EnumContrato::ATIVO}, duracao{duracao}
+    : id{Contrato::proxId}, cliente{nullptr}, veiculo{nullptr}, status{EnumContrato::ATIVO}, duracao{duracao}
 {
     this->setVeiculo(veiculo);
     this->setCliente(cliente);
+    Contrato::proxId++;
 }
+
+unsigned int Contrato::getId() const { return this->id; }
+
+void Contrato::setId(const unsigned int id) { this->id = id; }
 
 Cliente* Contrato::getCliente() const { return this->cliente; }
 
@@ -48,11 +55,12 @@ std::ostream& operator<<(std::ostream& stream, const Contrato& contrato) {
     Veiculo *v = contrato.getVeiculo();
     const Marca *m = v->getMarca();
 
-    stream << "Cliente: " << c->getNome() << std::endl
-              << "Veículo: ID " << v->getId() << " / " << m->getNome() << " "
-              << v->getModelo() << std::endl
-              << "Duracao: " << contrato.getDuracao() << std::endl
-              << "Preço: R$" << std::setprecision(2) << std::fixed << contrato.getPreco() << '\n';
+    stream << "Id: " << contrato.getId() << '\n'
+            << "Cliente: " << c->getNome() << '\n'
+            << "Veículo: ID " << v->getId() << " / " << m->getNome() << " "
+            << v->getModelo() << '\n'
+            << "Duracao: " << contrato.getDuracao() << '\n'
+            << "Preço: R$" << std::setprecision(2) << std::fixed << contrato.getPreco() << '\n';
 
     return stream;
 }

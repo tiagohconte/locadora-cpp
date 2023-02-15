@@ -79,6 +79,7 @@ void Console::imprimirContratosCliente(const Catalogo& catalogo) {
     std::cout << std::endl << "CPF do cliente: ";
     std::cin >> cpf;
 
+    std::cout << std::endl;
     try {
         cliente = catalogo.getClienteByCPF(cpf);
     } catch (CPFInvalidoException &cpfe) {

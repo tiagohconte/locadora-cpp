@@ -16,6 +16,9 @@ class Contrato {
         Contrato(Cliente* const cliente, Veiculo* const veiculo, const unsigned int duracao);
         virtual ~Contrato() = default;
 
+        unsigned int getId() const;
+        void setId(const unsigned int id);
+
         Cliente *getCliente() const;
         void setCliente(Cliente* const cliente);
 
@@ -31,6 +34,8 @@ class Contrato {
         virtual float getPreco() const;
 
     private:
+        static unsigned int proxId;
+        unsigned int id;
         Cliente *cliente;
         Veiculo *veiculo;
         EnumContrato status;
