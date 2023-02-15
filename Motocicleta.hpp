@@ -19,6 +19,8 @@ class Motocicleta : public Veiculo {
     unsigned short int getCilindrada() const;
     void setCilindrada(const unsigned short int cilindrada);
 
+    virtual void imprimirVeiculo() const;
+
    private:
     unsigned short int cilindrada;
 };

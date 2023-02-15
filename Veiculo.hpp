@@ -42,6 +42,8 @@ class Veiculo {
      EnumStatus getStatus() const;
      void setStatus(const EnumStatus status);
 
+     virtual void imprimirVeiculo() const;
+
     private:
         static unsigned int proxId;
         unsigned int id;

@@ -34,6 +34,8 @@ class Carro : public Veiculo {
     void setCategoria(const EnumCategoria categoria);
     std::string getNomeCategoria() const;
 
+    virtual void imprimirVeiculo() const;
+
    private:
     unsigned short int portas;
     EnumCategoria categoria;

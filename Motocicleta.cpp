@@ -24,4 +24,9 @@ void Motocicleta::setCilindrada(const unsigned short int cilindrada) {
     this->cilindrada = cilindrada;
 }
 
+void Motocicleta::imprimirVeiculo() const {
+    std::cout << (*this);
+    std::cout << "Cilindradas: " << this->getCilindrada() << std::endl << std::endl;
+}
+
 }  // namespace locadora

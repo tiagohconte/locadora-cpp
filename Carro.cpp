@@ -31,4 +31,11 @@ void Carro::setCategoria(const EnumCategoria categoria) {
 std::string Carro::getNomeCategoria() const{
     return nomeCategoria[this->getCategoria()];
 }
+
+void Carro::imprimirVeiculo() const {
+    std::cout << (*this);
+    std::cout << "Portas: " << this->getPortas() << std::endl
+              << "Categoria: " << this->getNomeCategoria() << std::endl
+              << std::endl;
+}
 }  // namespace locadora

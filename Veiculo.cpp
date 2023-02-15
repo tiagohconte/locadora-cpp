@@ -67,6 +67,10 @@ EnumStatus Veiculo::getStatus() const { return this->status; }
 
 void Veiculo::setStatus(const EnumStatus status) { this->status = status; }
 
+void Veiculo::imprimirVeiculo() const {
+    std::cout << (*this) << std::endl;
+}
+
 std::ostream& operator<<(std::ostream& stream, const locadora::Veiculo& veiculo) {
     stream << "ID: " << veiculo.getId() << '\n';
     stream << "Placa: " << veiculo.getPlaca() << '\n';

@@ -7,20 +7,9 @@
 
 using namespace locadora;
 
-void Console::imprimirDadosCarro(const Carro& carro) {
-    std::cout << carro;
-    std::cout << "Portas: " << carro.getPortas() << '\n';
-    std::cout << "Categoria: " << carro.getNomeCategoria() << '\n';
-}
-
-void Console::imprimirDadosMotocicleta(const Motocicleta& moto) {
-    std::cout << moto;
-    std::cout << "Cilindrada: " << moto.getCilindrada() << '\n';
-}
-
 void Console::imprimirCatalogoVeiculos(const Catalogo& catalogo) {
     for (Veiculo* v : catalogo.getVeiculos()) {
-        std::cout << *v << std::endl;
+        v->imprimirVeiculo();
     }
 }
 
@@ -33,8 +22,7 @@ void Console::imprimirCatalogoMarcas(const Catalogo& catalogo) {
 void Console::imprimirVeiculosDisponiveis(const Catalogo& catalogo) {
     for (Veiculo* v : catalogo.getVeiculos()) {
         if (v->getStatus() == EnumStatus::DISPONIVEL) {
-            std::cout << *v;
-            std::cout << std::endl;
+            v->imprimirVeiculo();
         }
     }
 }
@@ -49,15 +37,14 @@ void Console::imprimirVeiculosMarca(const Catalogo& catalogo) {
 
     if (marca != nullptr) {
         for (Veiculo* v : (*marca).getVeiculos()) {
-            std::cout << *v;
-            std::cout << std::endl;
+            v->imprimirVeiculo();
         }
     }
 }
 
 void Console::imprimirCatalogoClientes(const Catalogo& catalogo) {
-    for (Cliente* v : catalogo.getClientes()) {
-        std::cout << *v;
+    for (Cliente* c : catalogo.getClientes()) {
+        std::cout << *c;
         std::cout << std::endl;
     }
 }
