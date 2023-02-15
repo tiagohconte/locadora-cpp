@@ -11,8 +11,8 @@ namespace locadora {
 Contrato::Contrato(Cliente* const cliente, Veiculo* const veiculo, const unsigned int duracao)
     : cliente{nullptr}, veiculo{nullptr}, status{EnumContrato::ATIVO}, duracao{duracao}
 {
-    this->setCliente(cliente);
     this->setVeiculo(veiculo);
+    this->setCliente(cliente);
 }
 
 Cliente* Contrato::getCliente() const { return this->cliente; }
