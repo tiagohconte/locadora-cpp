@@ -51,23 +51,22 @@ void Console::imprimirCatalogoClientes(const Catalogo& catalogo) {
 }
 
 void Console::imprimirClienteCpf(const Catalogo& catalogo) {
-    Cliente* c;
+    Cliente* cliente = nullptr;
     unsigned long cpf;
     std::cout << std::endl << "CPF do cliente: ";
     std::cin >> cpf;
 
     try {
-        c = catalogo.getClienteByCPF(cpf);
-        if (c != nullptr) {
-            std::cout << (*c);
-            return;
-        }
+        cliente = catalogo.getClienteByCPF(cpf);
     } catch (CPFInvalidoException &cpfe) {
         std::cout << "\033[31mErro de CPF: " << cpfe.what() << "\033[0m"
                   << std::endl;
-        return;
     } catch (std::exception& e) {
         std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+    }
+
+    if (cliente != nullptr) {
+        std::cout << (*cliente);
         return;
     }
 
@@ -75,10 +74,19 @@ void Console::imprimirClienteCpf(const Catalogo& catalogo) {
 }
 
 void Console::imprimirContratosCliente(const Catalogo& catalogo) {
+    Cliente* cliente = nullptr;
     unsigned long cpf;
     std::cout << std::endl << "CPF do cliente: ";
     std::cin >> cpf;
-    Cliente* cliente = catalogo.getClienteByCPF(cpf);
+
+    try {
+        cliente = catalogo.getClienteByCPF(cpf);
+    } catch (CPFInvalidoException &cpfe) {
+        std::cout << "\033[31mErro de CPF: " << cpfe.what() << "\033[0m"
+                  << std::endl;
+    } catch (std::exception& e) {
+        std::cerr << "\033[31m" << e.what() << "\033[0m" << std::endl;
+    }
 
     if (cliente != nullptr) {
         for (Contrato* c : (*cliente).getContratos()) {
