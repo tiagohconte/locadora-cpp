@@ -96,7 +96,7 @@ void Console::imprimirContratosCliente(const Catalogo& catalogo) {
         }
 
         std::cout << std::endl << "1) Encerrar um contrato" << std::endl
-            << "2) Sair" << std::endl;
+            << "2) Menu principal" << std::endl;
         std::cin >> subop;
 
         if (subop == '1') {
