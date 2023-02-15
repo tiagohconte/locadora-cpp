@@ -11,6 +11,8 @@ enum class EnumStatus { DISPONIVEL, INDISPONIVEL };
 
 class Marca;
 class Veiculo {
+	friend std::ostream& operator<<(std::ostream& stream, const Veiculo& veiculo);
+
     public:
      Veiculo(Marca* const marca, const std::string& modelo, const float custo,
              const unsigned short int capacidade, const Placa& placa);

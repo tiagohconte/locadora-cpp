@@ -1,7 +1,7 @@
 #include "Veiculo.hpp"
 #include "Marca.hpp"
 
-using namespace locadora;
+namespace locadora {
 
 unsigned int Veiculo::proxId{0};
 
@@ -66,3 +66,19 @@ void Veiculo::setPlaca(const Placa& placa) { this->placa = placa; }
 EnumStatus Veiculo::getStatus() const { return this->status; }
 
 void Veiculo::setStatus(const EnumStatus status) { this->status = status; }
+
+std::ostream& operator<<(std::ostream& stream, const locadora::Veiculo& veiculo) {
+    stream << "ID: " << veiculo.getId() << '\n';
+    stream << "Placa: " << veiculo.getPlaca() << '\n';
+    if (veiculo.getMarca() != nullptr)
+        stream << "Marca: " << veiculo.getMarca()->getNome() << '\n';
+    else
+        stream << "Sem marca" << '\n';
+
+    stream << "Modelo: " << veiculo.getModelo() << '\n';
+    stream << "Custo: " << veiculo.getCusto() << '\n';
+    stream << "Capacidade: " << veiculo.getCapacidade() << '\n';
+
+    return stream;
+}
+}

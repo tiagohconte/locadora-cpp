@@ -12,7 +12,6 @@ class Console {
     Console() = delete;
     virtual ~Console() = default;
 
-    static void imprimirDadosVeiculo(const Veiculo& veiculo);
     static void imprimirDadosCarro(const Carro& carro);
     static void imprimirDadosMotocicleta(const Motocicleta& moto);
     static void imprimirCatalogoVeiculos(const Catalogo& catalogo);
@@ -21,10 +20,8 @@ class Console {
     static void imprimirVeiculosDisponiveis(const Catalogo& catalogo);
     static void imprimirVeiculosMarca(const Catalogo& catalogo);
 
-    static void imprimirDadosCliente(const Cliente& cliente);
     static void imprimirCatalogoClientes(const Catalogo& catalogo);
 
-    static void imprimirDadosContrato(const Contrato& contrato);
     static void imprimirContratosCliente(const Catalogo& catalogo);
 };
 }  // namespace locadora

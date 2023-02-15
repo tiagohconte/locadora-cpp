@@ -9,6 +9,9 @@ enum class EnumContrato {ATIVO, ENCERRADO};
 
 class Cliente;
 class Contrato {
+
+    friend std::ostream& operator<<(std::ostream& stream, const Contrato& contrato);
+
     public:
         Contrato(Cliente* const cliente, Veiculo* const veiculo, const unsigned int duracao);
         virtual ~Contrato() = default;

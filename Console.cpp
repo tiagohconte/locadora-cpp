@@ -7,36 +7,20 @@
 
 using namespace locadora;
 
-void Console::imprimirDadosVeiculo(const Veiculo& veiculo) {
-    std::cout << "ID: " << veiculo.getId() << '\n';
-    std::cout << "Placa: " << veiculo.getPlaca() << '\n';
-    // std::cout << "Disicplina: " << disciplina.getNome() << '\n';
-    if (veiculo.getMarca() != nullptr)
-        std::cout << "Marca: " << veiculo.getMarca()->getNome() << '\n';
-    else
-        std::cout << "Sem marca" << '\n';
-
-    std::cout << "Modelo: " << veiculo.getModelo() << '\n';
-    std::cout << "Custo: " << veiculo.getCusto() << '\n';
-    std::cout << "Capacidade: " << veiculo.getCapacidade() << '\n';
-
-}
-
 void Console::imprimirDadosCarro(const Carro& carro) {
-    imprimirDadosVeiculo(carro);
+    std::cout << carro;
     std::cout << "Portas: " << carro.getPortas() << '\n';
     std::cout << "Categoria: " << carro.getNomeCategoria() << '\n';
 }
 
 void Console::imprimirDadosMotocicleta(const Motocicleta& moto) {
-    imprimirDadosVeiculo(moto);
+    std::cout << moto;
     std::cout << "Cilindrada: " << moto.getCilindrada() << '\n';
 }
 
 void Console::imprimirCatalogoVeiculos(const Catalogo& catalogo) {
     for (Veiculo* v : catalogo.getVeiculos()) {
-        Console::imprimirDadosVeiculo(*v);
-        std::cout << std::endl;
+        std::cout << *v << std::endl;
     }
 }
 
@@ -49,7 +33,7 @@ void Console::imprimirCatalogoMarcas(const Catalogo& catalogo) {
 void Console::imprimirVeiculosDisponiveis(const Catalogo& catalogo) {
     for (Veiculo* v : catalogo.getVeiculos()) {
         if (v->getStatus() == EnumStatus::DISPONIVEL) {
-            Console::imprimirDadosVeiculo(*v);
+            std::cout << *v;
             std::cout << std::endl;
         }
     }
@@ -65,36 +49,17 @@ void Console::imprimirVeiculosMarca(const Catalogo& catalogo) {
 
     if (marca != nullptr) {
         for (Veiculo* v : (*marca).getVeiculos()) {
-            Console::imprimirDadosVeiculo(*v);
+            std::cout << *v;
             std::cout << std::endl;
         }
     }
 }
 
-void Console::imprimirDadosCliente(const Cliente& cliente) {
-    std::cout << "Nome: " << cliente.getNome() << '\n';
-    std::cout << "CPF: " << cliente.getCpf() << std::endl;
-}
-
 void Console::imprimirCatalogoClientes(const Catalogo& catalogo) {
     for (Cliente* v : catalogo.getClientes()) {
-        Console::imprimirDadosCliente(*v);
+        std::cout << *v;
         std::cout << std::endl;
     }
-}
-
-void Console::imprimirDadosContrato(const Contrato& contrato) {
-    Cliente *c = contrato.getCliente();
-    Veiculo *v = contrato.getVeiculo();
-    if (v == nullptr)
-        return;
-    const Marca *m = v->getMarca();
-
-    std::cout << "Cliente: " << c->getNome() << std::endl
-              << "Veículo: ID " << v->getId() << " / " << m->getNome() << " "
-              << v->getModelo() << std::endl
-              << "Duracao: " << contrato.getDuracao() << std::endl
-              << "Preço: R$" << std::setprecision(2) << std::fixed << contrato.getPreco() << std::endl;
 }
 
 void Console::imprimirContratosCliente(const Catalogo& catalogo) {
@@ -105,8 +70,7 @@ void Console::imprimirContratosCliente(const Catalogo& catalogo) {
 
     if (cliente != nullptr) {
         for (Contrato* c : (*cliente).getContratos()) {
-            Console::imprimirDadosContrato(*c);
-            std::cout << std::endl;
+            std::cout << *c << std::endl;
         }
     }
 }

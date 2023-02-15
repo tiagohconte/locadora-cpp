@@ -2,8 +2,11 @@
 #include "Cliente.hpp"
 #include "Veiculo.hpp"
 #include "VeiculoIndisponivelException.hpp"
+#include "Marca.hpp"
 
-using namespace locadora;
+#include <iomanip>
+
+namespace locadora {
 
 Contrato::Contrato(Cliente* const cliente, Veiculo* const veiculo, const unsigned int duracao)
     : cliente{nullptr}, veiculo{nullptr}, status{EnumContrato::ATIVO}, duracao{duracao}
@@ -39,3 +42,18 @@ unsigned short int Contrato::getDuracao() const { return this->duracao; }
 void Contrato::setDuracao(const unsigned int duracao) { this->duracao = duracao; }
 
 float Contrato::getPreco() const { return this->duracao * this->getVeiculo()->getCusto(); }
+
+std::ostream& operator<<(std::ostream& stream, const Contrato& contrato) {
+    Cliente *c = contrato.getCliente();
+    Veiculo *v = contrato.getVeiculo();
+    const Marca *m = v->getMarca();
+
+    stream << "Cliente: " << c->getNome() << std::endl
+              << "Veículo: ID " << v->getId() << " / " << m->getNome() << " "
+              << v->getModelo() << std::endl
+              << "Duracao: " << contrato.getDuracao() << std::endl
+              << "Preço: R$" << std::setprecision(2) << std::fixed << contrato.getPreco() << '\n';
+
+    return stream;
+}
+}

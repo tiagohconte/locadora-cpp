@@ -20,4 +20,11 @@ void Cliente::setCpf(const CPF& cpf) { this->cpf = cpf; }
 
 std::list<Contrato*> Cliente::getContratos() const { return this->contratos; }
 
+std::ostream& operator<<(std::ostream& stream, const Cliente& cliente) {
+    stream << "Nome: " << cliente.getNome() << '\n'
+    << "CPF: " << cliente.getCpf() << '\n';
+
+    return stream;
+}
+
 }
