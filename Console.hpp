@@ -12,8 +12,6 @@ class Console {
     Console() = delete;
     virtual ~Console() = default;
 
-    static void imprimirDadosCarro(const Carro& carro);
-    static void imprimirDadosMotocicleta(const Motocicleta& moto);
     static void imprimirCatalogoVeiculos(const Catalogo& catalogo);
     static void imprimirCatalogoMarcas(const Catalogo& catalogo);
 
